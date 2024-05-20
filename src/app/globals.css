@@ -10,3 +10,7 @@ ul, li, ol {
 img, button, li {
   cursor: pointer;
 }
+
+input {
+  outline: none;
+}
