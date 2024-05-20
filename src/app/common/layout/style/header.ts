@@ -3,14 +3,12 @@
 import styled from "styled-components";
 
 export const Header = styled.header`
-    position: fixed;
-    top: 0;
     width: 100vw;
-    height: 100px;
+    height: 8vh;
     display: flex;
     background-color: #F8F4E1;
     justify-content: space-between;
-    padding: 20px;
+    padding: 30px;
     box-sizing: border-box;
 `;
 
