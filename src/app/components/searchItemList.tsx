@@ -18,23 +18,26 @@ const SearchItemList = ({testData}: ISearchItemListProps) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-              const response = await fetch('/api/comments');
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              const result = await response.json();
-              setData(result);
-            } catch (error: any) {
-              setError(error);
-            } finally {
-              setLoading(false);
+        async function fetchCharacterData() {
+          try {
+            const characterName = "타락파워전사"; // 여기에 원하는 캐릭터명을 넣으세요
+            const response = await fetch(`/api/nexon/user?character_name=${characterName}`);
+            
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
             }
+            
+            const data = await response.json();
+            setData(data);
+          } catch (error: any) {
+            setError(error.message);
+          } finally {
+            setLoading(false);
           }
-      
-          fetchData();
-    }, []);
+        }
+    
+        fetchCharacterData();
+      }, []);
 
     return (
         <>
@@ -50,7 +53,6 @@ const SearchItemList = ({testData}: ISearchItemListProps) => {
                         )
                     })
                 }
-                {data.message}
             </S.SearchItemList>
         </>
     );
