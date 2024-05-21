@@ -5,6 +5,7 @@ import styled from "styled-components";
 export const SearchContain = styled.div`
     position: relative;
     width: 50%;
+    max-width: 600px;
 `;
 
 export const SearchInput = styled.input`
