@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-const API_KEY = process.env.NEXON_API_KEY;
-
 export async function GET(request: any) {
   const { searchParams } = new URL(request.url);
   const characterName = searchParams.get("character_name");
@@ -20,7 +18,8 @@ export async function GET(request: any) {
   try {
     const response = await fetch(urlString, {
       headers: {
-        "x-nxopen-api-key": API_KEY
+        "x-nxopen-api-key": process.env.NEXON_API_KEY as string
+
       },
     });
 
@@ -35,8 +34,9 @@ export async function GET(request: any) {
         'Content-Type': 'application/json',
       },
     });
-  } catch (error: any) {
-    return new Response(JSON.stringify({ error: error.message }), {
+  } catch (error) {
+    const err = error as Error;
+    return new Response(JSON.stringify({ error: err.message }), {
       status: 500,
       headers: {
         'Content-Type': 'application/json',
