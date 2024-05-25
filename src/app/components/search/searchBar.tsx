@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from "../style/searchBar";
+import * as S from "./style/searchBar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
