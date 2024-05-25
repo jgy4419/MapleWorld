@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 const Ranking = (props: any) => {
-    const [userList, setUserList] = useState([]);
+    const [userList, setUserList] = useState<any>([]);
     useEffect(() => {
         async function fetchRanking() {
             // 유저 랭킹인지 길드 랭킹인지 조건 처리하기
