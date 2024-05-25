@@ -1,15 +1,21 @@
 import React from 'react';
 import * as S from "./page_style";
-import SearchBar from "./components/searchBar";
-import SearchResult from "./components/searchResult";
+import EventImage from './components/information/EventImage';
+import SearchBar from "./components/search/searchBar";
+import Information from './components/information/InformationContainer';
+import SearchResult from "./components/search/searchResult";
 
 const Page = () => {
   return (
     <>
       <S.MainContainer>
-        <SearchBar />
-        <SearchResult />
-      </S.MainContainer>
+        <S.Inner>
+          <EventImage />
+          <SearchBar />
+          <Information />
+          {/* <SearchResult /> */}
+        </S.Inner>
+        </S.MainContainer>
     </>
   );
 };
