@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from "../style/searchItem";
+import * as S from "./style/searchItem";
 
 interface ISearchItem {
     item: any;
