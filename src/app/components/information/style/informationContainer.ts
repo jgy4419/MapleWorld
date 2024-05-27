@@ -4,10 +4,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     position: relative;
-    width: 450px;
+    width: 50%;
+    max-width: 600px;
+    min-width: 300px;
     height: 700px;
     background-color: #eee;
     border-radius: 20px;
+    overflow-y: scroll;
 `;
 
 export const Inner = styled.div`

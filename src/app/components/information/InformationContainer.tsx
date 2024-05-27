@@ -18,7 +18,7 @@ const InformationContainer = () => {
                                 )
                             })
                         }
-                    </S.MainInformationList>
+                    </S.MainInformationList>           
                     <Ranking clickItem={clickItem}/>
                 </S.Inner>
             </S.Container>
