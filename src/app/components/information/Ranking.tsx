@@ -1,10 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
-const Ranking = (props: any) => {
-    const [userList, setUserList] = useState<any>([]);
-    useEffect(() => {
-        async function fetchRanking() {
+    const fetchUserRanking = async () => {
             // 유저 랭킹인지 길드 랭킹인지 조건 처리하기
             try {
                 const response = await fetch("/api/nexon/ranking/userRanking");
@@ -14,13 +11,33 @@ const Ranking = (props: any) => {
                 }
 
                 const data = await response.json();
-                setUserList(data);
+                setUserList(data.ranking);
             } catch(error) {
                 console.log(error);
             }
-        };
-        fetchRanking();
-    }, [props]);
+    }
+
+    const fetchGuildRanking = async () => {
+        // 유저 랭킹인지 길드 랭킹인지 조건 처리하기
+        try {
+            const response = await fetch("/api/nexon/ranking/guildRanking");
+
+            if(!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const data = await response.json();
+            setUserList(data.ranking);
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        clickItem === "종합 랭킹"
+            ? fetchUserRanking()
+            : fetchGuildRanking();
+    }, [clickItem]);
 
     return (
         <>
