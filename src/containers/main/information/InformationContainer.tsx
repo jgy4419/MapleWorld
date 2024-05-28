@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import * as S from "./style/informationContainer";
 import Ranking from "./Ranking";
-import { MainInformationUl } from '@/util/constants';
+import { MainInformationUl } from '@/constants/main';
 
 const InformationContainer = () => {
     const [clickItem, setClickItem] = useState(MainInformationUl[0]);
@@ -18,7 +18,7 @@ const InformationContainer = () => {
                                 )
                             })
                         }
-                    </S.MainInformationList>
+                    </S.MainInformationList>           
                     <Ranking clickItem={clickItem}/>
                 </S.Inner>
             </S.Container>

@@ -6,6 +6,7 @@ export const SearchContain = styled.div`
     position: relative;
     width: 50%;
     max-width: 600px;
+    min-width: 300px;
 `;
 
 export const SearchInput = styled.input`

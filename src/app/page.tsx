@@ -1,9 +1,9 @@
 import React from 'react';
-import * as S from "./page_style";
-import EventImage from './components/information/EventImage';
-import SearchBar from "./components/search/searchBar";
-import Information from './components/information/InformationContainer';
-import SearchResult from "./components/search/searchResult";
+import * as S from "@/containers/main/Main";
+import EventImage from "@/containers/main/information/EventImage";
+import SearchBar from "@/containers/main/search/searchBar";
+import Information from "@/containers/main/information/InformationContainer";
+import SearchResult from "@/containers/main/search/searchResult";
 
 const Page = () => {
   return (
