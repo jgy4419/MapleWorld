@@ -3,21 +3,9 @@ import React, { useEffect, useState } from 'react';
 import * as S from "./style/Ranking";
 import UserRanking from './UserRanking';
 import GuildRanking from './GuildRanking';
+import { IRanking, IRankingProps } from "./type";
 
-interface IRanking {
-    character_name: string,
-    character_exp: number,
-    character_guildname: string,
-    character_level: number,
-    character_popularity: number,
-    class_name: string,
-    date: string,
-    ranking: number,
-    sub_class_name: string,
-    world_name: string
-}
-
-const Ranking = ({ clickItem }: any) => {
+const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
     const [userList, setUserList] = useState<IRanking[]>([]);
 
     const fetchUserRanking = async () => {

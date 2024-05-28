@@ -1,11 +1,8 @@
 import React from 'react';
 import * as S from "./style/searchItem";
+import { ISearchItemProps } from './type';
 
-interface ISearchItem {
-    item: any;
-}
-
-const SearchItem = ({item}: ISearchItem) => {
+const SearchItem = ({item}: ISearchItemProps) => {
     return (
         <>
             <S.SearchItem>

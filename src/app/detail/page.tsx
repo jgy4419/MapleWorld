@@ -33,7 +33,7 @@ const fetchDataISR = async () => {
     return res.json();
 }
 
-const Detail = (props: any) => {
+const Detail = () => {
 
     return (
         <div>

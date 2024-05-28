@@ -3,19 +3,10 @@ import React, { useState, useEffect } from 'react';
 import * as S from "./style/searchItemList";
 import SearchItem from "./searchItem";
 
-interface ISearchItemListProps {
-    testData: any[],
-    key: number
-}
-
-type Data = {
-    message?: string;
-}
-
-const SearchItemList = ({testData}: ISearchItemListProps) => {
-    const [data, setData] = useState<Data>({});
+const SearchItemList = () => {
+    const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string>("");
 
     useEffect(() => {
         async function fetchCharacterData() {
@@ -29,8 +20,9 @@ const SearchItemList = ({testData}: ISearchItemListProps) => {
             
             const data = await response.json();
             setData(data);
-          } catch (error: any) {
-            setError(error.message);
+          } catch (error) {
+            const err = error as Error
+            setError(err.message);
           } finally {
             setLoading(false);
           }
@@ -43,16 +35,7 @@ const SearchItemList = ({testData}: ISearchItemListProps) => {
         <>
             <S.SearchItemList>
                 <S.SearchResult>TEST 님을 검색한 결과입니다.</S.SearchResult>
-                {
-                    testData.map((item: any, index: number) => {
-                        return (
-                            <>
-                                <SearchItem key={index} item={item} />
-                                
-                            </>
-                        )
-                    })
-                }
+                
             </S.SearchItemList>
         </>
     );

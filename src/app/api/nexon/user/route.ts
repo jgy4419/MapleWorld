@@ -1,6 +1,7 @@
 import { fetchGet } from "@/services/get";
+import { NextRequest } from "next/server";
 
-export async function GET(request: any) {
+export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const characterName = searchParams.get("character_name");
   

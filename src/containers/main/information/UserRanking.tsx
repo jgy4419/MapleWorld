@@ -1,20 +1,8 @@
 import React from 'react';
 import * as S from "./style/UserRanking";
+import { IRanking, IUserRankingProps } from "./type";
 
-interface IRanking {
-    character_name: string,
-    character_exp: number,
-    character_guildname: string,
-    character_level: number,
-    character_popularity: number,
-    class_name: string,
-    date: string,
-    ranking: number,
-    sub_class_name: string,
-    world_name: string
-}
-
-const UserRanking = ({userList}: any) => {
+const UserRanking = ({userList}: IUserRankingProps) => {
     return (
         userList.map((list: IRanking, index: number) => {
             return (
