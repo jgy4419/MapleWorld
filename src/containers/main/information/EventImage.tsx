@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import styled from 'styled-components';
-import eventImage from "../../common/assets/img/eventImage.png";
+import eventImage from "@/app/common/assets/img/eventImage.png"
 
 const EventImage = () => {
     return (

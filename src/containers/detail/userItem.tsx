@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from "../style/userItem";
+import * as S from "./style/userItem";
 
 const UserItem = () => {
     return (

@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import UseItem from "./components/userItem";
-import ServerComponent from './serverComponent';
+import UseItem from "@/containers/detail/userItem";
+import ServerComponent from '@/containers/detail/serverComponent';
 
 // SSR
 const fetchDataSSR = async () => {

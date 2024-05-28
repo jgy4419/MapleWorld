@@ -1,7 +1,7 @@
 'use client';
 
 import styled from "styled-components";
-import backImage from "./common/assets/img/mapleBackImage.png"
+import backImage from "@/app/common/assets/img/mapleBackImage.png";
 
 export const MainContainer = styled.div`
     position: relative;
