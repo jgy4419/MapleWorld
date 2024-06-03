@@ -1,5 +1,27 @@
 import { maple_api_url } from "@/constants/common";
 
+// api route로 get 요청 할 때
+export const apiGet = async (url: string, error?: string) => {
+    try {
+        const response = await fetch(url);
+        console.log(url);
+        if(!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        console.log("data", data);
+        
+        return data;
+    } catch(err) {
+        error === null
+            ? console.log(err)
+            : console.log(error);
+    }
+}
+
+// api route에서 get 할 때
 export const fetchGet = async (url: string) => {
     try {
         const response = await fetch(maple_api_url + url, {
