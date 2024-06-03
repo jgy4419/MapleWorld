@@ -2,17 +2,9 @@ import { fetchGet } from "@/services/get";
 import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const characterName = searchParams.get("character_name");
-  
-  if (!characterName) {
-    return new Response(JSON.stringify({ error: "Character name is required" }), {
-      status: 400,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
+    const { searchParams } = new URL(request.url);
+    const ocid = searchParams.get("ocid");
+    const urlString = `character/basic?ocid=${ocid}`;
 
-  return fetchGet("id?character_name=" + characterName);
+    return fetchGet(urlString);
 }
