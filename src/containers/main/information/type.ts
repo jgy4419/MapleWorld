@@ -18,3 +18,18 @@ export interface IRankingProps {
 export interface IUserRankingProps {
     userList: IRanking[];
 }
+
+export interface IGuildList {
+    date: string,
+    guild_level: number,
+    guild_mark: string,
+    guild_master_name: string,
+    guild_name: string,
+    guild_point: number,
+    ranking: number,
+    world_name: string
+}
+
+export interface IGuildRankingProps {
+    rankingList: IGuildList[];
+}
