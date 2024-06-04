@@ -1,8 +1,8 @@
 'use client';
 import React, {useEffect, useState} from 'react';
 import * as S from "./style/searchResult";
-import { ISearchResultProps, ISearchUser, IUserInfo } from './type';
-import { apiGet } from '@/services/get';
+import { ISearchResultProps, IUserInfo } from './type';
+import { fetchOcid } from '@/services/main';
 
 const SearchResult = ({ searchResult }: ISearchResultProps) => {
     const [userData, setUserData] = useState<IUserInfo>({
@@ -20,19 +20,12 @@ const SearchResult = ({ searchResult }: ISearchResultProps) => {
     });
 
     useEffect(() => {
-        fetchOcid(searchResult);
+        getUserInfo(searchResult);
     }, [searchResult]);
 
-    const fetchOcid = async (searchResult: string) => {
-        fetchSearchUser(
-            await apiGet(`api/nexon/ocid?character_name=${searchResult}`)
-        );
-    }
-
-    const fetchSearchUser = async (res: ISearchUser) => {
-        setUserData(
-            await apiGet(`api/nexon/user?ocid=${res.ocid}`)
-        );
+    const getUserInfo = async (searchResult: string) => {
+        const res = await fetchOcid(searchResult)
+        setUserData(res);
     }
 
     return (
@@ -43,7 +36,7 @@ const SearchResult = ({ searchResult }: ISearchResultProps) => {
                     <S.CharacterInfo>
                         <S.CharacterName>이름 : {searchResult}</S.CharacterName>
                         <S.CharacterClass>직업 : {userData.character_class}</S.CharacterClass>
-                        <S.CharacterLevel>레벨 : {userData.character_class_level}</S.CharacterLevel>
+                        <S.CharacterLevel>레벨 : {userData.character_level}</S.CharacterLevel>
                         <S.CharacterWorldName>채널 : {userData.world_name}</S.CharacterWorldName>
                         <S.CharacterGuildName>길드명 : {userData.character_guild_name}</S.CharacterGuildName>
                     </S.CharacterInfo>
