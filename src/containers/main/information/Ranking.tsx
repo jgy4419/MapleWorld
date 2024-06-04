@@ -3,49 +3,24 @@ import React, { useEffect, useState } from 'react';
 import * as S from "./style/Ranking";
 import UserRanking from './UserRanking';
 import GuildRanking from './GuildRanking';
-import { IGuildList, IRanking, IRankingProps } from "./type";
+import { IRankingProps } from "./type";
 import { apiGet } from '@/services/get';
 
 const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
-    const [userList, setUserList] = useState<IRanking[]>([]);
-    const [rankingList, setRankingList] = useState<IGuildList[]>([]);
+    const [data, setData] = useState([]);
 
-    const fetchUserRanking = async () => {
-        // 유저 랭킹인지 길드 랭킹인지 조건 처리하기
-        try {
-            const response = await fetch("/api/nexon/ranking/userRanking");
+    const fetchData = async (clickItem: string) => {
+        let fetchData = [];
 
-            if(!response.ok) {
-                throw new Error("Network response was not ok");
-            }
+        clickItem === "종합 랭킹"
+            ? fetchData = await apiGet("/api/nexon/ranking/user")
+            : fetchData = await apiGet("/api/nexon/ranking/guild");
 
-            const data = await response.json();
-            setUserList(data.ranking);
-        } catch(error) {
-            console.log(error);
-        }
-        // setUserList(await apiGet("/api/nexon/ranking/userRanking"));
-    }
-
-    const fetchGuildRanking = async () => {
-        try {
-            const response = await fetch("/api/nexon/ranking/guildRanking");
-
-            if(!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-
-            const data = await response.json();
-            setRankingList(data.ranking);
-        } catch(error) {
-            console.log(error);
-        }
+            setData(fetchData.ranking);
     }
 
     useEffect(() => {
-        clickItem === "종합 랭킹"
-            ? fetchUserRanking()
-            : fetchGuildRanking();
+        fetchData(clickItem);
     }, [clickItem]);
 
     return (
@@ -58,8 +33,8 @@ const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
             <S.RankingList>
                 {
                     clickItem === "종합 랭킹"
-                    ? <UserRanking userList={userList} />
-                    : <GuildRanking rankingList={rankingList}/> 
+                    ? <UserRanking userList={data} />
+                    : <GuildRanking rankingList={data}/> 
                 }
             </S.RankingList>
         </>
