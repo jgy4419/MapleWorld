@@ -20,3 +20,10 @@ export const Inner = styled.div`
     gap: 30px;
     margin-top: 30px;
 ;`
+
+export const MainContent = styled.div`
+    max-width: 600px;
+    min-width: 300px;
+    height: 700px;
+    background-color #eee;
+`;

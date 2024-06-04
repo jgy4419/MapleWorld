@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const SearchContain = styled.div`
     position: relative;
-    width: 50%;
+    width: 70%;
     max-width: 600px;
     min-width: 300px;
 `;
