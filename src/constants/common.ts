@@ -5,7 +5,8 @@ export const getToday = () => {
 
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
+    const day = Number(String(today.getDate()).padStart(2, '0')) - 1;
     
-    return `${year}-${month}-${day}`;
+    // 당일 날짜 불러왔을 때 에러 생기는 부분 있어서 하루 뺀 날짜 반환.
+    return `${year}-${month}-0${day}`;
 }
