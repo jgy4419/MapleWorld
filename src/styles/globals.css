@@ -11,6 +11,6 @@ img, button, li {
   cursor: pointer;
 }
 
-input {
+input, select {
   outline: none;
 }

@@ -1,10 +1,16 @@
 'use client';
 
+import { fetchGuildOcid } from "@/services/main";
 import * as S from "./style/GuildRanking";
 import { IGuildRankingProps } from './type';
 
 
 const GuildRanking = ({rankingList}: IGuildRankingProps) => {
+    const guildClickHandler = async (index: number) => {
+        const { guild_name, world_name } = rankingList[index];
+
+        await fetchGuildOcid(guild_name, world_name);
+    }
 
     return (
         <S.Container>
@@ -12,7 +18,7 @@ const GuildRanking = ({rankingList}: IGuildRankingProps) => {
                 {
                     rankingList.map((list, index: number) => {
                         return (
-                            <S.GuildItem key={index}>
+                            <S.GuildItem key={index} onClick={() => guildClickHandler(index)}>
                                 <S.Count>{index + 1}</S.Count>
                                 <S.ItemInner>
                                     <S.GuildName>이름 : {list.guild_name}</S.GuildName>
