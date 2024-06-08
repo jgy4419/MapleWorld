@@ -10,6 +10,10 @@ export interface ISearchUser {
     ocid: string
 }
 
+export interface ISearchGuild {
+    oguild_id: string
+}
+
 export interface IUserInfo {
     character_class: string
     character_class_level: string
