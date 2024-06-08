@@ -3,8 +3,11 @@ import React, {useEffect, useState} from 'react';
 import * as S from "./style/searchResult";
 import { ISearchResultProps, IUserInfo } from './type';
 import { fetchOcid } from '@/services/main';
+import { useSelector } from 'react-redux';
+import { RootState } from "@/store/rootReducer";
 
 const SearchResult = ({ searchResult }: ISearchResultProps) => {
+    const selectValue = useSelector((state: RootState) => state.searchRes).selectTitle;
     const [userData, setUserData] = useState<IUserInfo>({
         character_class: "",
         character_class_level: "",
