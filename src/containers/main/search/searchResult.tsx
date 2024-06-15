@@ -1,29 +1,26 @@
 'use client';
 import React, {useEffect, useState} from 'react';
 import * as S from "./style/searchResult";
-import { ISearchResultProps, IUserInfo } from './type';
-import { fetchOcid } from '@/services/main';
+import { IGuildData, ISearchResultProps, IUserInfo } from './type';
+import { fetchGuildOcid, fetchOcid } from '@/services/main';
 import { useSelector } from 'react-redux';
 import { RootState } from "@/store/rootReducer";
+import SearchUserResult from './searchUserResult';
+import SearchGuildResult from './searchGuildResult';
 
-const SearchResult = ({ searchResult }: ISearchResultProps) => {
-    const selectValue = useSelector((state: RootState) => state.searchRes).selectTitle;
-    const [userData, setUserData] = useState<IUserInfo>({
-        character_class: "",
-        character_class_level: "",
-        character_exp: "",
-        character_exp_rate: "",
-        character_gender: "",
-        character_guild_name: "",
-        character_image: "",
-        character_level: 0,
-        character_name: "",
-        date: "",
-        world_name: ""
-    });
+const SearchResult = ({ searchResult, worldResult }: ISearchResultProps) => {
+    const [selectValue, worldValue] = [
+        useSelector((state: RootState) => state.searchRes).selectTitle,
+        useSelector((state: RootState) => state.searchRes).worldName
+    ];
+    // Partial를 사용해 모두 선택적으로 만들어주기
+    const [userData, setUserData] = useState<Partial<IUserInfo>>({});
+    const [guildData, setGuildData] = useState<Partial<IGuildData>>({});
 
     useEffect(() => {
-        getUserInfo(searchResult);
+        selectValue === "user"
+            ? getUserInfo(searchResult)
+            : getGuildInfo(searchResult);
     }, [searchResult]);
 
     const getUserInfo = async (searchResult: string) => {
@@ -31,18 +28,20 @@ const SearchResult = ({ searchResult }: ISearchResultProps) => {
         setUserData(res);
     }
 
+    const getGuildInfo = async (searchResult: string) => {
+        const res = await fetchGuildOcid(searchResult, worldValue);
+        setGuildData(res)
+    }
+
     return (
         <>
             <S.SearchResultContainer>
                 <S.Inner>
-                    <S.CharacterImage url={userData.character_image} />
-                    <S.CharacterInfo>
-                        <S.CharacterName>이름 : {searchResult}</S.CharacterName>
-                        <S.CharacterClass>직업 : {userData.character_class}</S.CharacterClass>
-                        <S.CharacterLevel>레벨 : {userData.character_level}</S.CharacterLevel>
-                        <S.CharacterWorldName>채널 : {userData.world_name}</S.CharacterWorldName>
-                        <S.CharacterGuildName>길드명 : {userData.character_guild_name}</S.CharacterGuildName>
-                    </S.CharacterInfo>
+                    {
+                        selectValue === "user"
+                            ? <SearchUserResult userData={userData} searchResult={searchResult}/>
+                            : <SearchGuildResult guildData={guildData} searchResult={searchResult}/>
+                    }
                 </S.Inner>
             </S.SearchResultContainer>
         </>
