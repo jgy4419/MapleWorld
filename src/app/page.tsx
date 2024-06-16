@@ -4,14 +4,16 @@ import * as S from "@/containers/main/Main";
 import EventImage from "@/containers/main/information/EventImage";
 import SearchBar from "@/containers/main/search/searchBar";
 import Information from "@/containers/main/information/InformationContainer";
-import SearchResult from "@/containers/main/search/searchResult";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/rootReducer";
 import Loading from '@/components/Loading';
 
 
 const Page = () => {
-  const value = useSelector((state: RootState) => state.searchRes).search;
+  const [searchValue, worldValue] = [
+    useSelector((state: RootState) => state.searchRes).search,
+    useSelector((state: RootState) => state.searchRes).worldName
+  ];
   const SearchResult = lazy(() => import("@/containers/main/search/searchResult"))
   
   return (
@@ -22,10 +24,10 @@ const Page = () => {
           <SearchBar />
           {/* <S.MainContent> */}
           {
-            value === ""
+            searchValue === ""
               ? <Information />
               : <Suspense fallback={<Loading />}>
-                  <SearchResult searchResult={value}/>
+                  <SearchResult searchResult={searchValue} worldResult={worldValue}/>
                 </Suspense>
           }
           {/* </S.MainContent> */}

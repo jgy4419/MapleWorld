@@ -1,22 +1,20 @@
-import React from 'react';
 import * as S from "./style/UserRanking";
 import { IRanking, IUserRankingProps } from "./type";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { searchResult } from "@/store/searchValue";
-import { fetchOcid } from '@/services/main';
+import useGetDataSlice from './hook/useGetDataSlice';
 
 const UserRanking = ({userList}: IUserRankingProps) => {
     const dispatch = useDispatch();
+    const { dataSlice }: any = useGetDataSlice(userList);
 
     const itemClickHandler = async (index: number) => {
         const userName = userList[index].character_name;
-
-        await fetchOcid(userName);
         dispatch(searchResult(userName));
     }
 
     return (
-        userList.map((list: IRanking, index: number) => {
+        dataSlice.map((list: IRanking, index: number) => {
             return (
                 <S.RankingItem key={index} onClick={() => itemClickHandler(index)}>
                     <S.Count>{index + 1}.</S.Count>

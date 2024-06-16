@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as S from "./style/Ranking";
 import UserRanking from './UserRanking';
 import GuildRanking from './GuildRanking';
@@ -8,20 +8,21 @@ import { apiGet } from '@/services/get';
 
 const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
     const [data, setData] = useState([]);
+    const rankingDiv = useRef<HTMLUListElement>(null);
 
     const fetchData = async (clickItem: string) => {
-        let fetchData = [];
+        let res = [];
 
         clickItem === "종합 랭킹"
-            ? fetchData = await apiGet("/api/nexon/ranking/user")
-            : fetchData = await apiGet("/api/nexon/ranking/guild");
+            ? res = await apiGet("/api/nexon/ranking/user")
+            : res = await apiGet("/api/nexon/ranking/guild");
 
-            setData(fetchData.ranking);
+            setData(res.ranking);
     }
 
     useEffect(() => {
         fetchData(clickItem);
-    }, [clickItem]);
+    }, [clickItem, rankingDiv]);
 
     return (
         <>
@@ -30,11 +31,11 @@ const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
                 1. 무한스크롤 구현하기 
                 2. 캐싱하기
             */}
-            <S.RankingList>
+            <S.RankingList ref={rankingDiv}>
                 {
                     clickItem === "종합 랭킹"
                     ? <UserRanking userList={data} />
-                    : <GuildRanking rankingList={data}/> 
+                    : <GuildRanking rankingList={data} /> 
                 }
             </S.RankingList>
         </>

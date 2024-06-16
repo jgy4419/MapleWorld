@@ -19,6 +19,10 @@ export interface IUserRankingProps {
     userList: IRanking[];
 }
 
+export interface IGuildRankingProps {
+    rankingList: IGuildList[];
+}
+
 export interface IGuildList {
     date: string,
     guild_level: number,
@@ -28,8 +32,4 @@ export interface IGuildList {
     guild_point: number,
     ranking: number,
     world_name: string
-}
-
-export interface IGuildRankingProps {
-    rankingList: IGuildList[];
 }

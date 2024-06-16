@@ -8,5 +8,5 @@ export const getToday = () => {
     const day = Number(String(today.getDate()).padStart(2, '0')) - 1;
     
     // 당일 날짜 불러왔을 때 에러 생기는 부분 있어서 하루 뺀 날짜 반환.
-    return `${year}-${month}-0${day}`;
+    return `${year}-${month}-${day}`;
 }
