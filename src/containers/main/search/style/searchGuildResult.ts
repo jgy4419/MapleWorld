@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-export const GuildImage = styled.img<{url: string}>`
-    background-image: url(${props => props.url});
+export const GuildImage = styled.img`
     width: 150px;
     height: 150px;
     background-repeat: no-repeat;
