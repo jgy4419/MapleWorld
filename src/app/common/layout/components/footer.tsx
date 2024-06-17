@@ -5,7 +5,10 @@ const Footer = () => {
     return (
         <>
             <S.Footer>
-                <S.Title>Maple Land</S.Title>
+                <S.Title>Data by NEXON Open API</S.Title>
+                <S.CopyRight>
+                    Copyright © 2024 jgy_98
+                </S.CopyRight>
             </S.Footer>
         </>
     );

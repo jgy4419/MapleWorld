@@ -26,3 +26,8 @@ export const worldList = [
     "버닝2",
     "버닝3"
 ];
+
+export const errorName = {
+    notUser: "유저 검색 결과가 없습니다.",
+    notGuild: "길드 검색 결과가 없습니다.",
+}
