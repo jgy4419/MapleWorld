@@ -2,6 +2,9 @@
 const nextConfig = {
     compiler: {
         styledComponents: true
+    },
+    images: {
+        domains: ['open.api.nexon.com']
     }
 };
 
