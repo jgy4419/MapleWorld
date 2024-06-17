@@ -15,14 +15,13 @@ export const apiGet = async (url: string, error?: string) => {
         
         return data;
     } catch(err) {
-        error === null
-            ? console.log(err)
-            : console.log(error);
+        if(error === null) return err
+        else return error;
     }
 }
 
 // api route에서 get 할 때
-export const fetchGet = async (url: string) => {
+export const fetchGet = async (url: string | Error) => {
     try {
         const response = await fetch(maple_api_url + url, {
             headers: {
