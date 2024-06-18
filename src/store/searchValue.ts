@@ -39,6 +39,10 @@ const searchValue = createSlice({
     },
     guildListLengthChange: (state) => {
       state.guildListLength += 20;
+    },
+    initLength: (state) => {
+      state.userListLength = 0;
+      state.guildListLength = 0;
     }
   },
 });
@@ -49,6 +53,7 @@ export const {
   worldNameChange, 
   listContainerChange,
   userListLengthChange,
-  guildListLengthChange
+  guildListLengthChange,
+  initLength
  } = searchValue.actions;
 export default searchValue.reducer;
