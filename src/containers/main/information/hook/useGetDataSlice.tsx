@@ -7,8 +7,8 @@ const useGetDataSlice = (data: any) => {
         userListLength,
         guildListLength,
         selectTitle
-     } = useSelector((state: RootState) => state.searchRes);
-    // const rankingCount = useSelector((state: RootState) => state.searchRes).guildListLength;
+    } = useSelector((state: RootState) => state.searchRes);
+
     const [dataSlice, setDataSlice] = useState<any[]>([]);
     
     useEffect(() => {
@@ -25,7 +25,7 @@ const useGetDataSlice = (data: any) => {
             setDataSlice(prev => [...prev, ...newData]);
         }
         
-    }, [data, userListLength, guildListLength]);
+    }, [data, userListLength, guildListLength, selectTitle]);
     return {dataSlice, userListLength, guildListLength};
 };
 
