@@ -7,8 +7,6 @@ import { searchResult, worldNameChange } from "@/store/searchValue";
 import { useDispatch } from "react-redux";
 import useGetDataSlice from "./hook/useGetDataSlice";
 
-
-
 const GuildRanking = ({ rankingList }: IGuildRankingProps) => {
     const dispatch = useDispatch();
     const { dataSlice }: any = useGetDataSlice(rankingList);

@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as S from "./style/informationContainer";
 import Ranking from "./Ranking";
 import { MainInformationUl } from '@/constants/main';
-import { selectTitleChange } from '@/store/searchValue';
+import { selectTitleChange, initLength } from '@/store/searchValue';
 import { useDispatch } from 'react-redux';
 import useGetScrollData from './hook/useScrollData';
 
@@ -30,6 +30,7 @@ const InformationContainer = () => {
                 ? "user"
                 : "guild"
         ));
+        dispatch(initLength());
         setClickItem(list);
     }
 
