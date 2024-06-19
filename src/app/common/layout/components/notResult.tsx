@@ -8,7 +8,7 @@ const NotResult = ({ title }: INotResultProps) => {
     return (
         <Container>
             <Inner>
-                <Image src={ErrorImg} width={130} alt="예외 이미지"/>
+                { ErrorImg &&  <Image src={ErrorImg} width={130} alt="예외 이미지"/> }
                 <Title>{title}</Title>
             </Inner>
         </Container>

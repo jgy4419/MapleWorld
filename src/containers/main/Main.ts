@@ -7,7 +7,9 @@ export const MainContainer = styled.div`
     position: relative;
     width: 100vw;
     min-height: 88vh;
-    background-image: url(${backImage.src});
+    // height: 110vh;
+    // background-image: url(${backImage.src});
+    background-color: #F6E6CB;
     background-size: cover;
     background-position: 50%;
     padding-top: 1px; // margin-top 했을 때 같이 적용되는 문제 수정.

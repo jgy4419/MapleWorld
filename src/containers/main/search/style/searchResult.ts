@@ -6,7 +6,7 @@ export const SearchResultContainer = styled.div`
     width: 50%;
     max-width: 600px;
     height: 500px;
-    background-color: #eee;
+    background-color: #E7D4B5;
     border-radius: 30px;
     display: flex;
     flex-direction: column;

@@ -4,13 +4,14 @@ export const RankingItem = styled.li`
     display: flex;    
     gap: 20px;
     width: 100%;
-    height: 80px;
-    border: 1px solid #333;
+    height: 130px;
     border-radius: 20px;
     margin-left: -20px;
     padding: 20px;
     box-sizing: border-box;
     margin-top: 20px;
+    background: #F6E6CB;
+    font-weight: 600;
 `;
 
 export const Count = styled.span`
@@ -20,8 +21,9 @@ export const Count = styled.span`
 export const ItemInner = styled.div`
     display: flex;
     flex-wrap: wrap;
+    gap: 3px;
     span {
-        width: 50%;
+        width: 100%;
     }
 `;
 

@@ -11,7 +11,15 @@ const SearchGuildResult = ({ guildData, searchResult }: any) => {
             {
                 guildData !== errorName.notGuild
                     ? <>
-                        <Image className="searchResImage" src={guildData.guild_mark === null ? noImg : guildData.guild_mark} width={150} height={150} alt="길드 이미지" />
+                        { 
+                            guildData.guild_mark && 
+                                <Image className="searchResImage" src={guildData.guild_mark} width={150} height={150} alt="길드 이미지" /> 
+                        }
+
+                        {
+                            !guildData.guild_mark && 
+                                <Image className="searchResImage" src={noImg} width={150} height={150} alt="길드 이미지" /> 
+                        }
                          <S.GuildInfo>
                              <S.GuildName>길드이름 : {searchResult}</S.GuildName>
                              <S.GuildMasterName>길드 마스터 : {guildData.guild_master_name}</S.GuildMasterName>

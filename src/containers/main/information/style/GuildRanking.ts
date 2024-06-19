@@ -13,13 +13,13 @@ export const GuildList = styled.div`
 `;
 
 export const GuildItem = styled.div`
-    border: 1px solid #333;
     border-radius: 20px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 60px;
     cursor: pointer;
+    background: #F6E6CB;
 `;
 
 export const Count = styled.h3`
