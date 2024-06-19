@@ -11,12 +11,11 @@ const EventImage = () => {
 
 const EventImg = styled.div`
     width: 550px;
-    height: 300px;
-    // background-color: #eee;
+    height: 200px;
     border-radius: 10px;
     cursor: pointer;
     background-image: url(${eventImage.src});
-    background-position: center;
+    background-position: -10px -100px;
     background-size: cover;
     object-fit: cover;
 `;
