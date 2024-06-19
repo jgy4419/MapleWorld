@@ -13,7 +13,7 @@ export const SearchContain = styled.div`
 export const Select = styled.select`
     border-radius: 10px 0px 0px 10px;
     border: 0;
-    background: #F8F4E1;
+    background: #E7D4B5;
     font-size: 16px;
     color: grey;
     padding: 10px;
@@ -32,7 +32,7 @@ export const SearchInput = styled.input`
     font-size: 20px;
     font-weight: 600;
     box-sizing: border-box;
-    background: #F8F4E1;
+    background: #E7D4B5;
 `;
 
 export const SearchButton = styled.button`

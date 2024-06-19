@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const Footer = styled.footer`
     position: absolute;
-    background-color: #F8F4E1;
+    background-color: #E7D4B5;
     width: 100vw;
     height: 75px;
     display: flex;

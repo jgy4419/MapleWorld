@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface SearchState {
-    search: string;
-    selectTitle: string;
-    worldName: string;
-    listContainerId: string;
-    userListLength: number,
-    guildListLength: number
+  search: string;
+  selectTitle: string;
+  worldName: string;
+  listContainerId: string;
+  userListLength: number,
+  guildListLength: number
 }
-  
-  const initialState: SearchState = {
-    search: "",
-    selectTitle: "user",
-    worldName: "",
-    listContainerId: "",
-    userListLength: 0,
-    guildListLength: 0
-  };
+
+const initialState: SearchState = {
+  search: "",
+  selectTitle: "user",
+  worldName: "",
+  listContainerId: "",
+  userListLength: 0,
+  guildListLength: 0
+};
 
 const searchValue = createSlice({
   name: 'searchRes',
@@ -55,5 +55,5 @@ export const {
   userListLengthChange,
   guildListLengthChange,
   initLength
- } = searchValue.actions;
+} = searchValue.actions;
 export default searchValue.reducer;

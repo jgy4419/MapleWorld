@@ -7,8 +7,8 @@ export const Container = styled.div`
     width: 70%;
     max-width: 600px;
     min-width: 300px;
-    height: 700px;
-    background-color: #eee;
+    height: 50vh;
+    background-color: #E7D4B5;
     border-radius: 20px;
     overflow-y: scroll;
 `;
@@ -39,7 +39,7 @@ export const ListItem = styled.li`
     font-weight: 600;
     transition: .3s;
     &:hover {
-        background-color: #AF8F6F;
+        background-color: #A0937D;
         color: #F8F4E1;
     }
 `;
