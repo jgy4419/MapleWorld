@@ -3,6 +3,8 @@ import { IRanking, IUserRankingProps } from "./type";
 import { useDispatch } from "react-redux";
 import { searchResult } from "@/store/searchValue";
 import useGetDataSlice from './hook/useGetDataSlice';
+import Favorites from "@/components/Favorites";
+import Favorite from "@/components/Favorite";
 
 const UserRanking = ({userList}: IUserRankingProps) => {
     const dispatch = useDispatch();
@@ -24,6 +26,7 @@ const UserRanking = ({userList}: IUserRankingProps) => {
                         <S.WorldName>World : {list.world_name}</S.WorldName>
                         <S.SubClassName>Job : {list.sub_class_name}</S.SubClassName>
                     </S.ItemInner>
+                    <Favorite state={true}/>
                 </S.RankingItem>
             )
         })   
