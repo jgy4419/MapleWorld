@@ -13,13 +13,17 @@ export const GuildList = styled.div`
 `;
 
 export const GuildItem = styled.div`
+    display: flex;    
+    gap: 20px;
+    width: 100%;
+    height: 130px;
     border-radius: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 60px;
-    cursor: pointer;
+    margin-left: -20px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 20px;
     background: #F6E6CB;
+    font-weight: 600;
 `;
 
 export const Count = styled.h3`
@@ -28,20 +32,19 @@ export const Count = styled.h3`
 export const ItemInner = styled.div`
     display: flex;
     flex-wrap: wrap;
+    span {
+        width: 100%;
+    }
 `;
 
 export const GuildName = styled.span`
-    width: 50%;
 `;
 
 export const GuildLevel = styled.span`
-    width: 50%;
 `;
 
 export const GuildPoint = styled.span`
-    width: 50%;
 `;
 
 export const GuildWorld = styled.span`
-    width: 50%;
 `;
