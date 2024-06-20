@@ -6,10 +6,12 @@ import { IGuildList, IGuildRankingProps } from './type';
 import { searchResult, worldNameChange } from "@/store/searchValue";
 import { useDispatch } from "react-redux";
 import useGetDataSlice from "./hook/useGetDataSlice";
+import Favorite from "@/components/Favorite";
 
 const GuildRanking = ({ rankingList }: IGuildRankingProps) => {
     const dispatch = useDispatch();
     const { dataSlice }: any = useGetDataSlice(rankingList);
+    const getFavorite = localStorage.getItem("favorite");
     
     const guildClickHandler = async (index: number) => {
         const { guild_name, world_name } = rankingList[index];
@@ -20,26 +22,33 @@ const GuildRanking = ({ rankingList }: IGuildRankingProps) => {
         dispatch(worldNameChange(world_name));
     }
 
+    const favoriteArray = (index: number) => {
+        let favoriteArr = [];
+
+        if(getFavorite) {
+            favoriteArr = JSON.parse(getFavorite);
+
+            return [...favoriteArr].includes(rankingList[index].guild_name)
+                ? true
+                : false;
+        }
+    }
+
     return (
-        <S.Container>
-            <S.GuildList>
-                {
-                    dataSlice.map((list: IGuildList, index: number) => {
-                        return (
-                            <S.GuildItem key={index} onClick={() => guildClickHandler(index)}>
-                                <S.Count>{index + 1}</S.Count>
-                                <S.ItemInner>
-                                    <S.GuildName>이름 : {list.guild_name}</S.GuildName>
-                                    <S.GuildLevel>레벨 : {list.guild_level}</S.GuildLevel>
-                                    <S.GuildPoint>포인트 : {list.guild_point}</S.GuildPoint>
-                                    <S.GuildWorld>채널 : {list.world_name}</S.GuildWorld>
-                                </S.ItemInner>
-                            </S.GuildItem>
-                        )
-                    })
-                }
-            </S.GuildList>
-        </S.Container>
+        dataSlice.map((list: IGuildList, index: number) => {
+            return (
+                <S.GuildItem key={index}>
+                    <S.Count>{index + 1}</S.Count>
+                    <S.ItemInner onClick={() => guildClickHandler(index)}>
+                        <S.GuildName>이름 : {list.guild_name}</S.GuildName>
+                        <S.GuildLevel>레벨 : {list.guild_level}</S.GuildLevel>
+                        <S.GuildPoint>포인트 : {list.guild_point}</S.GuildPoint>
+                        <S.GuildWorld>채널 : {list.world_name}</S.GuildWorld>
+                    </S.ItemInner>
+                    <Favorite state={favoriteArray(index) as boolean} title={list.guild_name}/>
+                </S.GuildItem>
+            )
+        })
     );
 };
 
