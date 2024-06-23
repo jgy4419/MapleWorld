@@ -31,3 +31,11 @@ export const errorName = {
     notUser: "유저 검색 결과가 없습니다.",
     notGuild: "길드 검색 결과가 없습니다.",
 }
+
+export const rankingState = (clickItem: string) => {
+    if(clickItem === "종합 랭킹") 
+        return ["character_name", "character_level", "world_name", "sub_class_name"];
+        
+    else 
+        return ["guild_name", "guild_level", "world_name", "guild_point"];
+}
