@@ -8,7 +8,8 @@ export interface IRanking {
     date: string,
     ranking: number,
     sub_class_name: string,
-    world_name: string
+    world_name: string,
+    [key: string] : any
 }
 
 export interface IRankingProps {
@@ -31,5 +32,6 @@ export interface IGuildList {
     guild_name: string,
     guild_point: number,
     ranking: number,
-    world_name: string
+    world_name: string,
+    [key: string] : any
 }

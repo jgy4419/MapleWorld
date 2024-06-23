@@ -18,6 +18,10 @@ const Favorite = ({ title, state }: IFavorite) => {
         setStarState(prev => !prev);
     }
 
+    useEffect(() => {
+        setStarState(state);
+    }, [state]);
+
     return (
         <>
             <Container onClick={() => buttonClickHandler()}>
