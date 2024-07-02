@@ -19,3 +19,8 @@ input, select {
   border-radius: 20px;
   object-fit: cover;
 }
+
+.select {
+  background-color: #A0937D;
+  color: #F8F4E1;
+}

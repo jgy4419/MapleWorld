@@ -15,6 +15,8 @@ const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
     const [dataKey, setDataKey] = useState<string[]>(rankingState("종합 랭킹"));
     const [favorite, setFavorite] = useState<string | null>(null);
 
+    const [currentClickItem, setCurrentClickItem] = useState("");
+
     const rankingDiv = useRef<HTMLUListElement>(null);
     const dispatch = useDispatch();
 
@@ -34,7 +36,7 @@ const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
     const favoriteArray = (index: number) => {
         let favoriteArr = [];
 
-        if(favorite) {
+        if(favorite && currentClickItem === clickItem) {
             favoriteArr = JSON.parse(favorite);
 
             return [...favoriteArr].includes(data[index][`${dataKey[0]}`])
@@ -45,7 +47,7 @@ const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
 
     const fetchData = async (clickItem: string) => {
         let res = [];
-        const getFavorite = localStorage.getItem("favorite");
+        const getFavorite = sessionStorage.getItem("favorite");
 
         clickItem === "종합 랭킹"
             ? res = await apiGet("/api/nexon/ranking/user")
@@ -57,16 +59,14 @@ const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
     }
 
     useEffect(() => {
+        console.log("clickItem", clickItem);
+        
+        setCurrentClickItem(clickItem);
         fetchData(clickItem);
     }, [clickItem]);
 
     return (
         <>
-            {/* 
-                [TODO]
-                1. 무한스크롤 구현하기 
-                2. 캐싱하기
-            */}
             <S.RankingList ref={rankingDiv}>
                 {
                     dataSlice.map((list: IRanking | IGuildList, index: number) => {
