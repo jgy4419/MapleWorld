@@ -7,7 +7,7 @@ interface IUseFavoriteArray {
 
 // 더 수정하기
 const useFavoriteArray = ({ index, list }: IUseFavoriteArray) => {
-    const getFavorite = localStorage.getItem("favorite");
+    const getFavorite = sessionStorage.getItem("favorite");
     const { selectTitle } = useSelector((state: RootState) => state.searchRes);
     let favoriteArr = [];
 
