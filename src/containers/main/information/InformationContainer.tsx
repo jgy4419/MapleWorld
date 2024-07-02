@@ -12,6 +12,15 @@ const InformationContainer = () => {
     const [clickItem, setClickItem] = useState(MainInformationUl[0]);
     const rankingContainer = useRef<HTMLDivElement>(null);
     const { handleScroll } = useGetScrollData(rankingContainer);
+    // 첫 번째 리스트 select 표시
+    useEffect(() => {
+        const firstList = rankingList.current;
+        if(firstList) {
+            firstList.classList.add("select");
+    
+            setSelectedITem(firstList);
+        }
+    }, []);
 
     useEffect(() => {
         const rankingContainerDom = rankingContainer.current;
