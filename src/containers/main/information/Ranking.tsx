@@ -20,7 +20,7 @@ const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
     const rankingDiv = useRef<HTMLUListElement>(null);
     const dispatch = useDispatch();
 
-    const { dataSlice }: any = useGetDataSlice(data);
+    const { dataSlice } = useGetDataSlice(data);
 
     const itemClickHandler = async (index: number) => {
         const { guild_name, world_name } = data[index];
@@ -59,11 +59,11 @@ const Ranking: React.FC<IRankingProps> = ({ clickItem }) => {
     }
 
     useEffect(() => {
-        console.log("clickItem", clickItem);
-        
         setCurrentClickItem(clickItem);
         fetchData(clickItem);
     }, [clickItem]);
+
+    console.log("dataSlice", dataSlice);
 
     return (
         <>

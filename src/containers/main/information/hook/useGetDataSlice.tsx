@@ -1,15 +1,16 @@
 import { RootState } from '@/store/rootReducer';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { IGuildList, IRanking } from '../type';
 
-const useGetDataSlice = (data: any) => {
+const useGetDataSlice = (data: (IRanking | IGuildList)[]) => {
     const {
         userListLength,
         guildListLength,
         selectTitle
-    } = useSelector((state: RootState) => state.searchRes);
-
-    const [dataSlice, setDataSlice] = useState<any[]>([]);
+     } = useSelector((state: RootState) => state.searchRes);
+    // const rankingCount = useSelector((state: RootState) => state.searchRes).guildListLength;
+    const [dataSlice, setDataSlice] = useState<(IRanking | IGuildList)[]>([]);
     
     useEffect(() => {
         let rankingCount = 0;
@@ -25,7 +26,7 @@ const useGetDataSlice = (data: any) => {
             setDataSlice(prev => [...prev, ...newData]);
         }
         
-    }, [data, userListLength, guildListLength, selectTitle]);
+    }, [data, userListLength, guildListLength]);
     return {dataSlice, userListLength, guildListLength};
 };
 

@@ -1,7 +1,3 @@
-export interface ISearchItemProps {
-    item: any;
-}
-
 export interface ISearchResultProps {
     searchResult: string;
     worldResult: string;
@@ -54,4 +50,14 @@ export interface IGuildData {
     guild_point: number;
     guild_skill: IGuildSkill[];
     world_name: string;
+}
+
+export interface ISearchUserResultProps {
+    userData: IUserInfo | string;
+    searchResult: string;
+}
+
+export interface ISearchGuildResultProps {
+    guildData: IGuildData | string;
+    searchResult: string;
 }

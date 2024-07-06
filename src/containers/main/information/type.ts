@@ -1,17 +1,3 @@
-export interface IRanking {
-    character_name: string,
-    character_exp: number,
-    character_guildname: string,
-    character_level: number,
-    character_popularity: number,
-    class_name: string,
-    date: string,
-    ranking: number,
-    sub_class_name: string,
-    world_name: string,
-    [key: string] : any
-}
-
 export interface IRankingProps {
     clickItem: string;
 }
@@ -32,6 +18,20 @@ export interface IGuildList {
     guild_name: string,
     guild_point: number,
     ranking: number,
+    world_name: string,
+    [key: string]: any
+}
+
+export interface IRanking {
+    character_name: string,
+    character_exp: number,
+    character_guildname: string,
+    character_level: number,
+    character_popularity: number,
+    class_name: string,
+    date: string,
+    ranking: number,
+    sub_class_name: string,
     world_name: string,
     [key: string] : any
 }
