@@ -27,7 +27,7 @@ const useGetDataSlice = (data: (IRanking | IGuildList)[]) => {
         }
         
     }, [data, userListLength, guildListLength]);
-    return {dataSlice, userListLength, guildListLength};
+    return { dataSlice, userListLength, guildListLength };
 };
 
 export default useGetDataSlice;
