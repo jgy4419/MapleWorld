@@ -13,7 +13,7 @@ const SearchResult = ({ searchResult, worldResult }: ISearchResultProps) => {
         useSelector((state: RootState) => state.searchRes).selectTitle,
         useSelector((state: RootState) => state.searchRes).worldName
     ];
-    // Partial를 사용해 모두 선택적으로 만들어주기
+
     const [userData, setUserData] = useState<IUserInfo>({} as IUserInfo);
     const [guildData, setGuildData] = useState<IGuildData>({} as IGuildData);
 

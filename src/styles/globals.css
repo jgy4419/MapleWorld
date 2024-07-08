@@ -3,6 +3,10 @@ body {
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 ul, li, ol {
   list-style: none;
 }
