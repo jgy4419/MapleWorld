@@ -2,9 +2,19 @@ import React from 'react';
 import Logo from "../../assets/img/mapleLogo.png";
 import Image from "next/image";
 import * as S from "../style/header";
+import Link from 'next/link';
 
 const Header = () => {
-    const headerList = ["직업", "아이템", "이벤트"];
+    const headerList = [{
+            title: "직업",
+            url: "/job"
+        }, {
+            title: "아이템",
+            url: "/item"}, 
+        {
+            title: "이벤트",
+            url: "/event"
+        }];
 
     const reload = () => {
         location.reload();
@@ -18,7 +28,13 @@ const Header = () => {
                     {
                         headerList.map((list, index) => {
                             return (
-                                <S.List key={index}>{list}</S.List>
+                                <div key={index}>
+                                    <Link
+                                        href={{
+                                            pathname: `${JSON.stringify(list.url).replaceAll('"', "")}`
+                                        }}
+                                    ><S.List>{list.title}</S.List></Link>
+                                </div>
                             )
                         })
                     }
