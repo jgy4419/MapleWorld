@@ -4,17 +4,26 @@ import { IEventList } from "./type";
 
 const EventList = () => {
     const eventList = useEventList();
-    const [eventData, setEventData] = useState<IEventList[]>();
-    useEffect(() => {
-        eventList.eventListData.length !== 0 && 
-            setEventData([...eventList.eventListData]);
-    }, [eventData]);
-    console.log(eventList);
+
     return (
         <>
-            <div>
-                {eventData !== undefined && eventData[0].title}
-            </div>
+            {
+                eventList.eventListData.length > 0
+                    ? 
+                    eventList.eventListData.map((data) => {
+                        return (
+                            <>
+                                <h3>{data.title}</h3>
+                            </>
+                        )
+                    })
+                    
+                    :  (
+                        <>
+                            <h1>잠시 기다려주세요!</h1>
+                        </>
+                    )
+            }
         </>
     );
 };
