@@ -21,6 +21,7 @@ export const RankingItem = styled.li`
     margin-top: 20px;
     background: #F6E6CB;
     font-weight: 600;
+    cursor: pointer;
 `;
 
 export const Count = styled.span`
