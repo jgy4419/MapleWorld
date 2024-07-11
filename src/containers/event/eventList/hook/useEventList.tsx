@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { IEventList } from '../type';
 
-const useEventList = () => {
+const useEventList = (path: string, state: string) => {
     // cors 우회 프록시 서비 URL
     const proxyUrl = 'http://cors-anywhere.herokuapp.com/';
     // 수집 대상 URL
-    // const url = 'https://ko.wikipedia.org/wiki/%ED%8F%AC%ED%84%B8:%EC%9A%94%EC%A6%98_%ED%99%94%EC%A0%9C';
-    const url = 'https://maple.gg/board/news/list';
+    const url = `http://maple.gg/${path}`;
 
     const [eventListData, setEventListData] = useState<IEventList[]>([]);
+    const [eventDetailDom, setEventDetailDom] = useState<string>("");
 
     useEffect(() => {
         // 실행
@@ -19,7 +19,7 @@ const useEventList = () => {
             .catch(err => console.error(err));
     }, []);
 
-    // 크롤링 함수
+    // 크롤링 실행하는 함수
     async function crawl(url: string) {
         // 수집중인 URL
         const decodedUrl = decodeURI(url);
@@ -38,27 +38,47 @@ const useEventList = () => {
         // HTML 문자열을 파싱해 DOM 객체 생성
         const parser = new DOMParser();
         const htmlDOM = parser.parseFromString(htmlString, "text/html");
-        // console.log(htmlDOM);
         getEventData(htmlDOM);
     }
 
     const getEventData = (html: Document) => {
+        if(state === "list")
+            eventList(html);
+        else 
+            eventDetail(html);
+    }
+
+    const eventList = (html: Document) => {
         // 데이터 추출
-        // const container = html.querySelector(".event_board");
         const itemList: IEventList[] = [];
-        const eventContainer: NodeListOf<HTMLDivElement> = html.querySelectorAll(".text-title");
-        eventContainer.forEach((tag) => {
-            console.log(tag.innerText);
-            itemList.push({
-                title: tag.innerText,
-                url: tag.querySelector("a")!.href
-            })
-        })
+        const titles: NodeListOf<HTMLDivElement> = html.querySelectorAll(".text-title");
+        
+        let link = "",
+            urlMatch: RegExpMatchArray | null;
+
+        for(let i = 0; i < titles.length; i++) {
+            link = titles[i].querySelector("a")!.href;
+            urlMatch = link.match(/view\/\d+/);
+            
+            if(titles[i] && urlMatch) {
+                itemList.push({
+                    title: titles[i].innerText,
+                    url: "event/" + urlMatch[0]
+                });
+            }
+        }
 
         setEventListData([...itemList]);
     }
 
-    return { eventListData };
+    const eventDetail = (html: Document) => {
+        console.log(html);
+        const mainElement = html.querySelectorAll("section");
+        
+        mainElement && setEventDetailDom(mainElement[1]?.innerHTML);
+    }
+
+    return { eventListData, eventDetailDom };
 };
 
 export default useEventList;
