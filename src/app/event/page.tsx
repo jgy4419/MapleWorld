@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import styled from 'styled-components';
-import EventList from '@/containers/event/eventList/EvenetList';
+import EventList from '@/containers/event/eventList/EventList';
 
 const page = () => {
     return (
