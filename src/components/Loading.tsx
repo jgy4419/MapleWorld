@@ -14,5 +14,5 @@ export default Loading;
 const LoadingContain = styled.div`
     position: relative;
     font-size: 100px;  
-    color: #fff;  
+    color: #fff;
 `;
