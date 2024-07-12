@@ -14,6 +14,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.1",
     "@reduxjs/toolkit": "^2.2.5",
+    "http-proxy-middleware": "^3.0.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
@@ -27,5 +28,6 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "typescript": "^5"
-  }
+  },
+  "proxy": "http://cors-anywhere.herokuapp.com/http://maple.gg/"
 }
