@@ -26,7 +26,11 @@ const Page = () => {
           {
             searchValue === ""
               ? <Information />
-              : <Suspense fallback={<Loading />}>
+              : <Suspense fallback={
+                <div className='loadingContainer'>
+                  <Loading />
+                </div>
+              }>
                   <SearchResult searchResult={searchValue} worldResult={worldValue}/>
                 </Suspense>
           }

@@ -29,3 +29,11 @@ input, select {
   background-color: #A0937D;
   color: #F8F4E1;
 }
+
+.loadingContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

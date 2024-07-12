@@ -1,8 +1,10 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import useEventList from '@/containers/event/eventList/hook/useEventList';
+import Loading from '@/components/Loading';
+import styled from 'styled-components';
 
 const EventDetail = () => {
     const router = String(usePathname().match(/view\/\d+/));
@@ -18,9 +20,27 @@ const EventDetail = () => {
 
     return (
         <>
-            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+            <Container>
+            {
+                eventDetailDom === ""
+                    ? (
+                        <div className='loadingContainer'>
+                            <Loading />
+                        </div>
+                    )
+                    : (
+                        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                    )
+            }
+            </Container>
         </>
     );
 };
+
+const Container = styled.div`
+    position: relative;
+    width: 100vw;
+    min-height: 80vh;
+`;
 
 export default EventDetail;

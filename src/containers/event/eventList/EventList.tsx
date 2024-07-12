@@ -32,7 +32,9 @@ const EventList = () => {
                         })
                         
                         :  (
-                            <Loading/>
+                            <div className="loadingContainer">
+                                <Loading/>
+                            </div>
                         )
                 }
                 </S.EventUl>
