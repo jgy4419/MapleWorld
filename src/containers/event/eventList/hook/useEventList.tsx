@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { IEventList } from '../type';
+import { useRouter } from 'next/navigation';
 
 const useEventList = (path: string, state: string) => {
+    const router = useRouter();
     // cors 우회 프록시 서비 URL
-    const proxyUrl = 'http://cors-anywhere.herokuapp.com/';
+    const proxyUrl = 'https://cors.bridged.cc/';
     // 수집 대상 URL
     const url = `http://maple.gg/${path}`;
 
@@ -25,20 +27,30 @@ const useEventList = (path: string, state: string) => {
         const decodedUrl = decodeURI(url);
         console.log(`크롤링, ${decodedUrl}...`);
 
-        // URL에서 데이터를 가져옴
-        const response = await fetch(proxyUrl + url, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
-                'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
-            }
-        });
 
-        // 응답 데이터를 문자열로 반환
-        const htmlString = await response.text();
-        // HTML 문자열을 파싱해 DOM 객체 생성
-        const parser = new DOMParser();
-        const htmlDOM = parser.parseFromString(htmlString, "text/html");
-        getEventData(htmlDOM);
+        try {
+            // URL에서 데이터를 가져옴
+            const response = await fetch(proxyUrl + url, {
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+                    'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7'
+                }
+            });
+        
+            // 응답 데이터를 문자열로 반환
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const htmlString = await response.text();
+            // HTML 문자열을 파싱해 DOM 객체 생성
+            const parser = new DOMParser();
+            const htmlDOM = parser.parseFromString(htmlString, "text/html");
+            getEventData(htmlDOM);
+        } catch (error) {
+            console.error('Fetch error:', error);
+            // router.push("/404");
+        }
     }
 
     const getEventData = (html: Document) => {
