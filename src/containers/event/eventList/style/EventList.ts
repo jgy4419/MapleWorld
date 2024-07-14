@@ -21,7 +21,8 @@ export const EventLi = styled.li`
     border-bottom: 1px solid #333;
     text-align: center;
     &:nth-child(1) {
-        background-color: #eee;
+        background-color: #E7D4B5;
         border-bottom: 0px solid #333;
+        font-weight: 700;
     }
 `;
