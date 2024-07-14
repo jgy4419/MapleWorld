@@ -6,12 +6,9 @@ import Link from 'next/link';
 
 const Header = () => {
     const headerList = [{
-            title: "직업",
-            url: "/job"
-        }, {
-            title: "아이템",
-            url: "/item"}, 
-        {
+            title: "메인",
+            url: "/"
+        },{
             title: "이벤트",
             url: "/event"
         }];

@@ -3,14 +3,14 @@
 import styled from "styled-components";
 
 export const SearchResultContainer = styled.div`
-    width: 50%;
+    width: 60%;
     max-width: 600px;
-    height: 500px;
     background-color: #E7D4B5;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 20px;
 `;
 
 export const Inner = styled.div`

@@ -2,11 +2,8 @@ import Link from "next/link";
 import useEventList from "./hook/useEventList";
 import * as S from "./style/EventList";
 import Loading from "@/components/Loading";
-import { useDispatch } from "react-redux";
-import { detailUrlChange } from "@/store/eventValue";
 
 const EventList = () => {
-    const dispatch = useDispatch();
     const eventList = useEventList("board/news/list", "list");
 
     return (

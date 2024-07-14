@@ -1,3 +1,10 @@
+.main {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #F6E6CB;
+}
+
 body {
   margin: 0;
   padding: 0;
